@@ -4,16 +4,28 @@ function filterEmpty(value) {
   }
 
   switch (value.constructor) {
-    case Array:
-      return value.filter((i) => i);
+    case Array: {
+      const filteredArray = [];
 
+      value.forEach((v) => {
+        const child = filterEmpty(v);
+
+        if (child) {
+          filteredArray.push(child);
+        }
+      });
+
+      return filteredArray;
+    }
     case Object: {
       const filteredObject = {};
 
       for (const property in value) {
         if (value.hasOwnProperty(property)) {
-          if (value[property]) {
-            filteredObject[property] = value[property];
+          const child = filterEmpty(value[property]);
+
+          if (child) {
+            filteredObject[property] = child;
           }
         }
       }
@@ -21,7 +33,7 @@ function filterEmpty(value) {
       return filteredObject;
     }
     default:
-      break;
+      return value;
   }
 }
 

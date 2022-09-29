@@ -1,13 +1,17 @@
 {
   "name": "filter_empty",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "filter null, undefined, emptry string and all other falsy value in your Object or Array. Support deep filter.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "keywords": [
-    "filter"
+    "filter",
+    "filterEmpty",
+    "filterFalsy",
+    "noEmpty",
+    "noFalsy"
   ],
   "author": "patrick_kuei",
   "license": "MIT",
