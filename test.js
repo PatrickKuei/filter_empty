@@ -30,7 +30,7 @@ describe("Real data", function () {
           level2: {
             level3: {
               key1: 'This value is ok',
-              key2: null,
+              key2: false,
               key3: ['', null, 'This is also ok', {
                 level4: {
                   key4: 'This is another ok',
@@ -47,7 +47,7 @@ describe("Real data", function () {
           level2: {
             level3: {
               key1: "This value is ok",
-              key2: null,
+              key2: false,
               key3: [
                 "",
                 null,
@@ -68,6 +68,7 @@ describe("Real data", function () {
           level2: {
             level3: {
               key1: "This value is ok",
+              key2: false,
               key3: [
                 "This is also ok",
                 {

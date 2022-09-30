@@ -1,39 +1,37 @@
 function filterEmpty(value) {
-  if (!value) {
-    return;
-  }
+  if (value || value === false) {
+    switch (value.constructor) {
+      case Array: {
+        const filteredArray = [];
 
-  switch (value.constructor) {
-    case Array: {
-      const filteredArray = [];
+        value.forEach((v) => {
+          const child = filterEmpty(v);
 
-      value.forEach((v) => {
-        const child = filterEmpty(v);
+          if (child || child === false) {
+            filteredArray.push(child);
+          }
+        });
 
-        if (child) {
-          filteredArray.push(child);
-        }
-      });
+        return filteredArray;
+      }
+      case Object: {
+        const filteredObject = {};
 
-      return filteredArray;
-    }
-    case Object: {
-      const filteredObject = {};
+        for (const property in value) {
+          if (value.hasOwnProperty(property)) {
+            const child = filterEmpty(value[property]);
 
-      for (const property in value) {
-        if (value.hasOwnProperty(property)) {
-          const child = filterEmpty(value[property]);
-
-          if (child) {
-            filteredObject[property] = child;
+            if (child || child === false) {
+              filteredObject[property] = child;
+            }
           }
         }
-      }
 
-      return filteredObject;
+        return filteredObject;
+      }
+      default:
+        return value;
     }
-    default:
-      return value;
   }
 }
 

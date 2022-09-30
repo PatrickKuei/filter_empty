@@ -1,6 +1,6 @@
 {
   "name": "filter_empty",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "filter null, undefined, emptry string and all other falsy value in your Object or Array. Support deep filter.",
   "main": "index.js",
   "scripts": {
